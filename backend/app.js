@@ -88,6 +88,7 @@ var employee_schema = new mongoose.Schema({
   LastName: { type: String, required: true },
   Email: { type: String, required: true, unique: true },
   Password: { type: String, required: true },
+  Account:{ type: Number, required: true },
   
 });
 employee_schema.plugin(autoIncrement.plugin, {
@@ -2550,7 +2551,9 @@ app.post("/api/login", (req, res) => {
       } else {
         console.log("req-->",req.body.email,result)
        
-        Employee1.findOne({},
+        Employee1.findOne(
+          { Email: req.body.email },
+          "Password _id Account FirstName LastName",
          
           function (err, document) {
             if (err || document == null) {
@@ -2559,6 +2562,7 @@ app.post("/api/login", (req, res) => {
             } else {
               console.log("else condition",document)
               if (document.Password == req.body.password) {
+
                 emp = {
                   _id: document._id,
                   Account: document.Account,
