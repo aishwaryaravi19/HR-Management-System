@@ -65,6 +65,7 @@ class DashboardAdmin extends Component {
   }
 
   render() {
+    console.log("this.props",this.props.data)
     return (
       <Router>
         {/* <Redirect to='/login'  /> */}
@@ -79,7 +80,7 @@ class DashboardAdmin extends Component {
               <div id="sidebar-top-content" />
               <div id="main-title">
                 <FontAwesomeIcon icon={faUsersCog} className="sidebar-icon" />
-                Admin
+               <h4 style={{textAlign:'center'}}>Admin</h4>
               </div>
               <ul className="navbar-ul">
                 <li>
@@ -88,12 +89,7 @@ class DashboardAdmin extends Component {
                     Role 
                   </Link> 
                 </li>
-                <li>
-                  <Link to="/admin/position">
-                    <FontAwesomeIcon icon={faChair} className="sidebar-icon" /> 
-                    Position 
-                  </Link> 
-                </li>
+               
                 <li>
                   <Link to="/admin/department">
                     <FontAwesomeIcon
@@ -103,21 +99,8 @@ class DashboardAdmin extends Component {
                     Department 
                   </Link> 
                 </li>
-                <li>
-                  <Link to="/admin/project-bid">
-                    <FontAwesomeIcon
-                      icon={faDollarSign}
-                      className="sidebar-icon"
-                    /> 
-                    Project Bidding 
-                  </Link> 
-                </li>
-                <li>
-                  <Link to="/admin/portal-master">
-                    <FontAwesomeIcon icon={faTasks} className="sidebar-icon" /> 
-                    Portal Master 
-                  </Link> 
-                </li>
+               
+                
                 
               </ul>
             </div>
@@ -154,10 +137,10 @@ class DashboardAdmin extends Component {
                   path="/admin"
                   render={() => <Redirect to="/admin/role" />}
                 /> */}
-                <Route render={() => 
+                {/* <Route render={() => 
 <NotFound404/>
                   // <Redirect to="/admin/role" />
-                } />
+                } /> */}
               </Switch>
             </div>
           </div>

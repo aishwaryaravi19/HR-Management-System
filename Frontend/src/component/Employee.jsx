@@ -122,6 +122,7 @@ class Employee extends Component {
     this.setState({ EmpInfoBool: false })
   };
   handleEmployeeSubmit = event => {
+    console.log("handleEmployee")
     event.preventDefault();
     console.log("id", event.target[0].value, event.target[1].value);
     this.setState({ table: true });

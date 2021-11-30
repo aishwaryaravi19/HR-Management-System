@@ -70,6 +70,7 @@ class Role extends Component {
       CompanyID: event.target[0].value,
       RoleName: event.target[1].value
     };
+    console.log("bodyy-->",body)
     //  let body= "CompanyID=" + event.target[0].value + "&Role=" + event.target[1].value;
     //  let body= "FenilKaneria";
     axios

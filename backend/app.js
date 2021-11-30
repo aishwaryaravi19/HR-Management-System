@@ -641,6 +641,7 @@ app.get("/api/role", verifyAdminHR, (req, res) => {
   Role.find()
     .populate("company")
     .exec(function (err, role) {
+      console.log("response from apio role",role)
       res.send(role);
     });
 });
@@ -1587,6 +1588,7 @@ app.get("/api/employee", verifyHR, (req, res) => {
 });
 
 app.post("/api/employee", verifyHR, (req, res) => {
+  console.log("post employee")
   Joi.validate(req.body, EmployeeValidation, (err, result) => {
     if (err) {
       console.log(err);
@@ -1617,9 +1619,11 @@ app.post("/api/employee", verifyHR, (req, res) => {
           console.log(err);
           res.send("error");
         } else {
-          res.send(employee);
-
           console.log("new employee Saved");
+          res.send(employee);
+          
+
+         
         }
       });
       console.log(req.body);
@@ -2625,12 +2629,11 @@ function verifyAdminHR(req, res, next) {
     // decodedData = jwt.decode(req.headers['authorization']);
     // if(decodedData.Account)
     jwt.verify(Header, jwtKey, (err, authData) => {
-      console.log("authData.Account",authData,err)
+    
       if (err) {
         res.sendStatus(403);
       } else {
-        console.log(authData);
-        console.log("authData.Account",authData.Account)
+        
         if (authData.Account == 1 || authData.Account == 2) {
           next();
         } else {
@@ -2644,7 +2647,7 @@ function verifyAdminHR(req, res, next) {
   }
 }
 function verifyHR(req, res, next) {
-  console.log(req.headers["authorization"]);
+ 
   const Header = req.headers["authorization"];
 
   if (typeof Header !== "undefined") {
@@ -2654,7 +2657,6 @@ function verifyHR(req, res, next) {
       if (err) {
         res.sendStatus(403);
       } else {
-        console.log(authData);
         if (authData.Account == 2) {
           next();
         } else {
@@ -2668,7 +2670,7 @@ function verifyHR(req, res, next) {
   }
 }
 function verifyHREmployee(req, res, next) {
-  console.log(req.headers["authorization"]);
+  
   const Header = req.headers["authorization"];
 
   if (typeof Header !== "undefined") {
