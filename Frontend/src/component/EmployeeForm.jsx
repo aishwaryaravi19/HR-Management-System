@@ -12,13 +12,15 @@ class EmployeeForm extends Component {
   }
 
   loadRoleInfo = () => {
+    console.log("loadrole")
     axios
-      .get(process.env.REACT_APP_API_URL + "/api/role", {
+      .get("http://localhost:4000" + "/api/role", {
         headers: {
           authorization: localStorage.getItem("token") || ""
         }
       })
       .then(response => {
+        console.log("Response--->",response)
         this.setState({ roleData: response.data });
       })
       .catch(error => {
@@ -27,7 +29,7 @@ class EmployeeForm extends Component {
   };
   loadPositionInfo = () => {
     axios
-      .get(process.env.REACT_APP_API_URL + "/api/position", {
+      .get("http://localhost:4000" + "/api/position", {
         headers: {
           authorization: localStorage.getItem("token") || ""
         }
@@ -41,7 +43,7 @@ class EmployeeForm extends Component {
   };
   loadDepartmentInfo = () => {
     axios
-      .get(process.env.REACT_APP_API_URL + "/api/department", {
+      .get("http://localhost:4000" + "/api/department", {
         headers: {
           authorization: localStorage.getItem("token") || ""
         }
@@ -248,14 +250,14 @@ class EmployeeForm extends Component {
                 Position
               </Form.Label>
               <Col sm={10} className="form-input">
-                <Form.Control as="select" name="position" required>
+                {/* <Form.Control as="select" name="position" required>
                   <option value="" disabled selected>
                     Select your option
                   </option>
                   {this.state.positionData.map((data, index) => (
                     <option key={index} value={data["_id"]}>{data["PositionName"]}</option>
                   ))}
-                </Form.Control>
+                </Form.Control> */}
               </Col>
             </Form.Group>
             <Form.Group as={Row}>

@@ -10,6 +10,8 @@ import PersonalInfo from "./employee/PersonalInfo.jsx";
 import Education from "./employee/Education.jsx";
 import FamilyInfo from "./employee/FamilyInfo.jsx";
 import WorkExperience from "./employee/WorkExperience.jsx";
+//import { MongooseDocument } from "mongoose";
+import moment from 'moment'
 
 
 
@@ -137,22 +139,23 @@ class Employee extends Component {
       ContactNo: event.target[10].value,
       EmployeeCode: event.target[11].value,
       DepartmentID: event.target[12].value,
-      PositionID: event.target[13].value,
-      DateOfJoining: event.target[14].value,
-      TerminateDate: event.target[15].value,
+      //PositionID: event.target[13].value,
+      DateOfJoining: moment().format("YYYY-MM-DD"),
+      //TerminateDate: event.target[15].value,
     };
     axios
-      .post(process.env.REACT_APP_API_URL + "/api/employee", body, {
+      .post("http://localhost:4000" + "/api/employee", body, {
         headers: {
           authorization: localStorage.getItem("token") || ""
         }
       })
       .then(res => {
+        console.log("result from post",res)
         this.setState({ table: false });
         this.setState({ table: true });
       })
       .catch(err => {
-        console.log(err);
+        console.log("Errr from post",err);
       });
   };
   handleAddEmployee = () => {

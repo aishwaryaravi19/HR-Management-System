@@ -31,6 +31,7 @@ faCity,
 faGlobeAmericas,
 faPlaceOfWorship,
 faArchway,
+faUserCircle
 } from "@fortawesome/free-solid-svg-icons";
 
 function RoleHRF() {
@@ -109,8 +110,8 @@ class DashboardHR extends Component {
             <div id="sidebar">
               <div id="sidebar-top-content" />
               <div id="main-title">
-                <FontAwesomeIcon icon={faUserTie} className="sidebar-icon" />
-                HR
+                <FontAwesomeIcon icon={faUserCircle} className="sidebar-icon" />
+                <h6 style={{textAlign:'center',marginTop:5}}>HR</h6>
               </div>
               <ul className="navbar-ul">
                 <li>

@@ -10,9 +10,9 @@ require('dotenv').config()
 //connecting to mongodb
 let mongoURI = "mongodb+srv://easyaccess:Qwerty@123@cluster0.zo06e.mongodb.net/EasyFlow?retryWrites=true&w=majority";
 //seting up jwt token
-let jwtKey = process.env.JWTKEY;
-
-
+//let jwtKey = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiAiNTA3ZjFmNzdiY2Y4NmNkNzk5NDM5MDExIiwgIkFjY291bnQiOiAiMCIsICJGaXJzdE5hbWUiOiAiUmFteWEiLCAiTGFzdE5hbWUiOiAiTWFoZXNoIn0.QtnkPZnkuua3WlDDqasa9Zui8H4qjzBt-V2gJRlqwRxN97DRZa__XtwfH7jLRmtI_Wr6LVStWsaixBZmUgrhHcgbpm9tddUOjcXdOGirdqF_JDP1PnDZdPlFGCMs-tOVFG5egDxZ3VYaKhILJf0vcDQF4AkKk5cS4ihGwFkx_zpE2ZBPov7O1tSxWDGOvQxNkdSVmZDe6ePZP9dvM91s3sbehNUrG2jhXjB8H48kpOs9fpHCOeF29Q5ihqHkTD1H8Goe_2GMkaA_WmsCFx8ZOMvjURBBJlF-_zYHXwHVPbs6UFIJpVglmKUGsdJc6Mzs5Gqu3pF1FeUtxB7XKSZugQ%";
+//let jwtKey="QtnkPZnkuua3WlDDqasa9Zui8H4qjzBt-V2gJRlqwRxN97DRZa__XtwfH7jLRmtI_Wr6LVStWsaixBZmUgrhHcgbpm9tddUOjcXdOGirdqF_JDP1PnDZdPlFGCMs-tOVFG5egDxZ3VYaKhILJf0vcDQF4AkKk5cS4ihGwFkx_zpE2ZBPov7O1tSxWDGOvQxNkdSVmZDe6ePZP9dvM91s3sbehNUrG2jhXjB8H48kpOs9fpHCOeF29Q5ihqHkTD1H8Goe_2GMkaA_WmsCFx8ZOMvjURBBJlF-_zYHXwHVPbs6UFIJpVglmKUGsdJc6Mzs5Gqu3pF1FeUtxB7XKSZugQ%"
+let jwtKey="eyJfaWQiOiAiNTA3ZjFmNzdiY2Y4NmNkNzk5NDM5MDExIiwgIkFjY291bnQiOiAiMCIsICJGaXJzdE5hbWUiOiAiUmFteWEiLCAiTGFzdE5hbWUiOiAiTWFoZXNoIn0"
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
@@ -80,23 +80,24 @@ employeeSchema.plugin(autoIncrement.plugin, {
   field: "EmployeeID"
 });
 
+
 var Employee = mongoose.model("Employee", employeeSchema);
 
-var employee_schema = new mongoose.Schema({
-  FirstName: { type: String, required: true },
+// var employee_schema = new mongoose.Schema({
+//   FirstName: { type: String, required: true },
   
-  LastName: { type: String, required: true },
-  Email: { type: String, required: true, unique: true },
-  Password: { type: String, required: true },
-  Account:{ type: Number, required: true },
+//   LastName: { type: String, required: true },
+//   Email: { type: String, required: true, unique: true },
+//   Password: { type: String, required: true },
+//   Account:{ type: Number, required: true },
   
-});
-employee_schema.plugin(autoIncrement.plugin, {
-  model: "Employee1",
-  field: "EmployeeID"
-});
+// });
+// employee_schema.plugin(autoIncrement.plugin, {
+//   model: "Employee1",
+//   field: "EmployeeID"
+// });
 
-var Employee1 = mongoose.model("Employee1", employee_schema);
+//var Employee1 = mongoose.model("Employee1", employee_schema);
 
 const EmployeeValidation = Joi.object().keys({
   RoleID: Joi.optional(),
@@ -636,6 +637,7 @@ const CompanyValidation = Joi.object().keys({
 });
 
 app.get("/api/role", verifyAdminHR, (req, res) => {
+  console.log("get role--->")
   Role.find()
     .populate("company")
     .exec(function (err, role) {
@@ -825,9 +827,11 @@ app.delete("/api/position/:id", verifyAdminHR, (req, res) => {
 
 //Department
 app.get("/api/department", verifyAdminHR, (req, res) => {
+  console.log("department")
   Department.find()
     .populate("company")
     .exec(function (err, employees) {
+      console.log("employes->",employees,err)
       res.send(employees);
     });
 });
@@ -1603,7 +1607,7 @@ app.post("/api/employee", verifyHR, (req, res) => {
         ContactNo: req.body.ContactNo,
         EmployeeCode: req.body.EmployeeCode,
         department: req.body.DepartmentID,
-        position: req.body.PositionID,
+        //position: req.body.PositionID,
         DateOfJoining: req.body.DateOfJoining,
         TerminateDate: req.body.TerminateDate
       };
@@ -2550,10 +2554,13 @@ app.post("/api/login", (req, res) => {
         res.status(400).send(err.details[0].message);
       } else {
         console.log("req-->",req.body.email,result)
+        // State.find({},function(err,res){
+        //   console.log("Err",err,res)
+        // })
        
-        Employee1.findOne(
+        Employee.findOne(
           { Email: req.body.email },
-          "Password _id Account FirstName LastName",
+          "Password _id Account FirstName LastName department",
          
           function (err, document) {
             if (err || document == null) {
@@ -2612,15 +2619,18 @@ function verifyAdmin(req, res, next) {
 function verifyAdminHR(req, res, next) {
   console.log(req.headers["authorization"]);
   const Header = req.headers["authorization"];
+  console.log("req.headers[",req.headers["authorization"])
 
   if (typeof Header !== "undefined") {
     // decodedData = jwt.decode(req.headers['authorization']);
     // if(decodedData.Account)
     jwt.verify(Header, jwtKey, (err, authData) => {
+      console.log("authData.Account",authData,err)
       if (err) {
         res.sendStatus(403);
       } else {
         console.log(authData);
+        console.log("authData.Account",authData.Account)
         if (authData.Account == 1 || authData.Account == 2) {
           next();
         } else {

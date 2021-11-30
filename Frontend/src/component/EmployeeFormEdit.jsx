@@ -51,7 +51,7 @@ class EmployeeFormEdit extends Component {
 
   loadRoleInfo = () => {
     axios
-      .get(process.env.REACT_APP_API_URL + "/api/role", {
+      .get(process.env["REACT_APP_API_URL"] + "/api/role", {
         headers: {
           authorization: localStorage.getItem("token") || ""
         }
