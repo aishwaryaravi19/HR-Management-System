@@ -19,7 +19,8 @@ class Login extends Component {
           <div id="main-outer-div">
             <div id="logo-div">
                
-              <img id="logo-img" src={Logo} alt="" />
+              {/* <img id="logo-img" src={Logo} alt="" /> */}
+              <h4 style={{textAlign:'center'}}>EasyAccess</h4>
             </div>
             <div id="title-div">
                
@@ -29,7 +30,7 @@ class Login extends Component {
             <div id="outer-login-form-div">
               <form action="" method="" onSubmit={this.props.onSubmit}>
                 {/* <div className="form-group"> */}
-                  <input className="login-form-input"
+                  <input className="form-control"
                     type="text"
                     // className="form-control"
                     placeholder="Email"
@@ -37,8 +38,9 @@ class Login extends Component {
                     name="Username"
                   />
                 {/* </div> */}
+                <div style={{marginTop:7}}/>
                 {/* <div className="form-group"> */}
-                  <input className="login-form-input"
+                  <input  className="form-control"
                     type="password"
                     // className="form-control"
                     placeholder="Password"

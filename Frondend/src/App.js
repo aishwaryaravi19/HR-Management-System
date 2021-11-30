@@ -39,7 +39,7 @@ class App extends Component {
 
     }, () => {
       // temporary : for user to see user id and pass of all accounts to explore all features of app
-      this.alertFirstTime()
+      //this.alertFirstTime()
     });
 
   }
@@ -194,7 +194,7 @@ class App extends Component {
     // {Email: id, Password: pass}
 
     axios
-      .post(process.env.REACT_APP_API_URL + "/api/login", bodyLogin)
+      .post("http://localhost:4000" + "/api/login", bodyLogin)
       .then(res => {
         // console.log(decodedData.Account);
         console.log(jwt.decode(res.data));
