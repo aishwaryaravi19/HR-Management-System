@@ -158,7 +158,7 @@ class RoleTable extends Component {
       <div id="table-outer-div-scroll" >
         <div style={{justifyContent:'space-between',display:'flex',flexDirection:'row',paddingRight:'5%',alignItems:'center'}}>
         <div style={{flex:1}}>
-        <h2 id="role-title">Role Details</h2>
+        <h2 style={{fontFamily:"cursive"}} id="role-title">Role Details</h2>
         </div>
 
         <Button

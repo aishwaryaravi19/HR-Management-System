@@ -1567,11 +1567,12 @@ app.put("/api/company/:id", verifyHR, (req, res) => {
 /////////////////////Employee
 
 app.get("/api/employee", verifyHR, (req, res) => {
+  
   // {path: 'projects', populate: {path: 'portals'}}
   Employee.find()
     // .populate({ path: "city", populate: { path: "state" } ,populate: { populate: { path: "country" } } })
     .populate({
-      path: "role position department"
+      path: "role department"
       // populate: {
       //   path: "state",
       //   model: "State",
@@ -1581,14 +1582,15 @@ app.get("/api/employee", verifyHR, (req, res) => {
       //   }
       // }
     })
-    .select("-salary -education -familyInfo -workExperience -Password")
+    .select(" -education  -workExperience -Password")
     .exec(function (err, employee) {
+      console.log("employee->",employee)
       res.send(employee);
     });
 });
 
 app.post("/api/employee", verifyHR, (req, res) => {
-  console.log("post employee")
+  console.log("post employee",req)
   Joi.validate(req.body, EmployeeValidation, (err, result) => {
     if (err) {
       console.log(err);
