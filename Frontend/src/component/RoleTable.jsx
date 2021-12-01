@@ -155,17 +155,23 @@ class RoleTable extends Component {
 
   render() {
     return (
-      <div id="table-outer-div-scroll">
+      <div id="table-outer-div-scroll" >
+        <div style={{justifyContent:'space-between',display:'flex',flexDirection:'row',paddingRight:'5%',alignItems:'center'}}>
+        <div style={{flex:1}}>
         <h2 id="role-title">Role Details</h2>
+        </div>
 
         <Button
           variant="primary"
-          id="add-button"
+          //id="add-button"
+          style={{height:40}}
+          className="btn btn-primary"
           onClick={this.props.onAddRole}
         >
           <FontAwesomeIcon icon={faPlus} id="plus-icon" />
           Add
         </Button>
+        </div>
         <div id="clear-both" />
         {!this.state.loading ? (
           <div
