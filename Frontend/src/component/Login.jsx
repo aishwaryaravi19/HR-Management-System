@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Login.css";
-import Logo from "../img/logo.png";
+import Logo from "../img/brand.gif";
 import { css } from "@emotion/core";
 // First way to import
 import { ScaleLoader } from "react-spinners";
@@ -14,13 +14,13 @@ class Login extends Component {
   render() {
     // let value=(this.props.pass) ? undefined : "";
     return (
-      <div>
-        <div className="container">
+      <div className="container">
+        <div >
           <div id="main-outer-div">
             <div id="logo-div">
                
-              {/* <img id="logo-img" src={Logo} alt="" /> */}
-              <h4 style={{textAlign:'center'}}>EasyAccess</h4>
+              <img id="logo-img" src={Logo} alt="" />
+              {/* <h4 style={{textAlign:'center'}}>EasyAccess</h4> */}
             </div>
             <div id="title-div">
                
