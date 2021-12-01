@@ -186,34 +186,36 @@ class AdminEmployeeTable extends Component {
 
   loadEmployeeData = () => {
     axios
-      .get(process.env.REACT_APP_API_URL + "/api/employee", {
+      .get(process.env["REACT_APP_API_URL"] + "/api/employee", {
         headers: {
           authorization: localStorage.getItem("token") || ""
         }
       })
       .then(response => {
         this.employeeObj = response.data;
-        console.log("response", response.data);
+        console.log("response---->", response);
         this.setState({ employeeData: response.data });
         this.setState({ loading: false });
         this.rowDataT = [];
+        console.log("")
         this.employeeObj.map(data => {
           let temp = {
             data,
             Email: data["Email"],
             Password: data["Password"],
             Account: data["Account"] == 1 ? "Admin" : (data["Account"] == 2 ? "HR" : (data["Account"] == 3 ? "Employee" : "")),
-            RoleName: data["role"][0]["RoleName"],
+            RoleName: data["role"] && data["role"].length>0 ? data["role"][0]["RoleName"] :" ",
             FirstName: data["FirstName"],
             MiddleName: data["MiddleName"],
             LastName: data["LastName"],
             DOB: data["DOB"].slice(0, 10),
             ContactNo: data["ContactNo"],
             EmployeeCode: data["EmployeeCode"],
-            DepartmentName: data["department"][0]["DepartmentName"],
-            PositionName: data["position"][0]["PositionName"],
+            DepartmentName: data["department"] && data["department"].length>0 ?data["department"][0]["DepartmentName"]:" ",
+            PositionName: " ",
             DateOfJoining: data["DateOfJoining"].slice(0, 10)
           };
+          console.log("temp-->",temp)
 
           this.rowDataT.push(temp);
         });
@@ -317,8 +319,9 @@ class AdminEmployeeTable extends Component {
 
   render() {
     // let filteredEmp = this.getFilteredEmp();
+    console.log("this.state",this.state.rowData)
     return (
-      <div id="table-outer-div-scroll">
+      <div id="table-outer-div-scroll" style={{}}>
         <h2 id="role-title">Employee Details</h2>
 
         <Button
