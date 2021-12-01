@@ -1,5 +1,17 @@
 body {
-  background-color: #2b447b;
+  background-color: #53658d;
+  background-image: url('../img/background.jpg');
+  /* The image used */
+  /* background-image: url("img_nature.jpg"); */
+
+  /* Control the height of the image */
+  min-height: 380px;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
 }
 #root {
   height: auto;
@@ -17,6 +29,7 @@ body {
 }
 
 .container {
+  
 }
 
 #logo-img {
