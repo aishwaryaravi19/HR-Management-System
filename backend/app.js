@@ -584,10 +584,10 @@ var companySchema = new mongoose.Schema({
   Email: { type: String, required: true },
   ContactPerson: { type: String, required: true },
   ContactNo: { type: String, required: true },
-  FaxNo: { type: String, required: true },
-  PanNo: { type: String, required: true },
-  GSTNo: { type: String, required: true },
-  CINNo: { type: String, required: true },
+  FaxNo: { type: String, required: false },
+  PanNo: { type: String, required: false },
+  GSTNo: { type: String, required: false },
+  CINNo: { type: String, required: false },
   Deleted: { type: Boolean },
   city: [{ type: mongoose.Schema.Types.ObjectId, ref: "City" }]
 });

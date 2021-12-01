@@ -62,11 +62,15 @@ class CompanyForm extends Component {
     this.loadCityInfo();
   }
   onCountryChange(e) {
-    console.log(e.target.value);
+    console.log("target value",e.target.value);
     let currentCountry = e.target.value;
-
+    console.log("state data", this.state.stateData);
     let filteredState = this.state.stateData.filter(
-      data => data["country"][0]["_id"] == currentCountry
+      data =>
+      { 
+        console.log("data-->",data["country"][0]);
+        return data["country"][0]["_id"] == currentCountry
+      }
     );
     this.setState({ filteredStateData: filteredState });
 
@@ -216,7 +220,7 @@ class CompanyForm extends Component {
                 <Form.Control type="Text" placeholder="Contact No" required />
               </Col>
             </Form.Group>
-            <Form.Group as={Row}>
+            {/* <Form.Group as={Row}>
               <Form.Label column sm={2}>
                 FaxNo
               </Form.Label>
@@ -251,7 +255,7 @@ class CompanyForm extends Component {
               <Col sm={10} className="form-input">
                 <Form.Control type="Text" placeholder="CINNo" required />
               </Col>
-            </Form.Group>
+            </Form.Group> */}
 
             <Form.Group as={Row} id="form-submit-button">
               <Col sm={{ span: 10, offset: 2 }}>

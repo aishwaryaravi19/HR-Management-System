@@ -120,12 +120,12 @@ class DashboardHR extends Component {
                     User 
                   </Link> 
                 </li>
-                <li>
+                {/* <li>
                   <Link to="/hr/salary">
                     <FontAwesomeIcon icon={faRupeeSign} className="sidebar-icon" /> 
                     Salary 
                   </Link> 
-                </li>
+                </li> */}
                 <li>
                   <Link to="/hr/leave-application-hr">
                     <FontAwesomeIcon icon={faFileAlt} className="sidebar-icon" /> 
@@ -144,12 +144,12 @@ class DashboardHR extends Component {
                     Role 
                   </Link> 
                 </li>
-                <li>
+                {/* <li>
                   <Link to="/hr/position">
                     <FontAwesomeIcon icon={faChair} className="sidebar-icon" /> 
                     Position 
                   </Link> 
-                </li>
+                </li> */}
                 <li>
                   <Link to="/hr/department">
                     <FontAwesomeIcon
@@ -197,11 +197,11 @@ class DashboardHR extends Component {
                   // exact
                   component={EmployeeF}
                 />
-                <Route
+                {/* <Route
                   path="/hr/salary"
                   exact
                   component={SalaryF}
-                />
+                /> */}
                 <Route
                   path="/hr/company"
                   exact

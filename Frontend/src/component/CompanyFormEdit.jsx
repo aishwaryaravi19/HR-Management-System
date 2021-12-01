@@ -277,7 +277,7 @@ class CompanyFormEdit extends Component {
                   onChange={value => this.onContactNoDataChange(value)} />
               </Col>
             </Form.Group>
-            <Form.Group as={Row}>
+            {/* <Form.Group as={Row}>
               <Form.Label column sm={2}>
                 FaxNo
               </Form.Label>
@@ -317,7 +317,7 @@ class CompanyFormEdit extends Component {
                 <Form.Control type="Text" placeholder="CINNo" required value={this.state.CINNoData}
                   onChange={value => this.onCINNoDataChange(value)} />
               </Col>
-            </Form.Group>
+            </Form.Group> */}
 
             <Form.Group as={Row} id="form-submit-button">
               <Col sm={{ span: 10, offset: 2 }}>
