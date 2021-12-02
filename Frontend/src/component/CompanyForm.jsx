@@ -220,7 +220,7 @@ class CompanyForm extends Component {
                 <Form.Control type="Text" placeholder="Contact No" required />
               </Col>
             </Form.Group>
-            <Form.Group as={Row}>
+            {/* <Form.Group as={Row}>
               <Form.Label column sm={2}>
                 FaxNo
               </Form.Label>
@@ -255,7 +255,7 @@ class CompanyForm extends Component {
               <Col sm={10} className="form-input">
                 <Form.Control type="Text" placeholder="CINNo" required />
               </Col>
-            </Form.Group>
+            </Form.Group> */}
 
             <Form.Group as={Row} id="form-submit-button">
               <Col sm={{ span: 10, offset: 2 }}>
