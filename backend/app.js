@@ -1681,18 +1681,16 @@ app.put("/api/employee/:id", verifyHR, (req, res) => {
 });
 
 app.delete("/api/employee/:id", verifyHR, (req, res) => {
-  // Employee.findByIdAndRemove({ _id: req.params.id }, function (err, employee) {
-  //   if (!err) {
-  //     console.log(" state deleted");
-  //     res.send(employee);
-  //   } else {
-  //     console.log(err);
-  //     res.send("error");
-  //   }
-  // });
-  res.send("error");
-  console.log("delete");
-  console.log(req.params.id);
+  Employee.findByIdAndRemove({ _id: req.params.id }, function (err, employee) {
+    if (!err) {
+      console.log(" state deleted");
+      res.send(employee);
+    } else {
+      console.log(err);
+      res.send("error");
+    }
+  });
+  
 });
 
 ////////////////////////////////
