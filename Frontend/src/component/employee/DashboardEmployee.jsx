@@ -65,7 +65,7 @@ class DashboardHR extends Component {
               <div id="sidebar-top-content" />
               <div id="main-title" className="main-title-employee">
                 <FontAwesomeIcon icon={faUsers} className="sidebar-icon" />
-                Employee
+                <h4 style={{textAlign:'center'}}>Employee</h4> 
               </div>
               <ul className="navbar-ul">
                 <li>
@@ -96,7 +96,7 @@ class DashboardHR extends Component {
                     Education
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link to={
                       "/employee/" + this.props.data["_id"] + "/family-info"
                     }>
@@ -106,7 +106,7 @@ class DashboardHR extends Component {
                     />
                     Dependents
                   </Link>
-                </li>
+                </li> */}
                 <li>
                   <Link to={
                       "/employee/" + this.props.data["_id"] + "/work-experience"
@@ -183,8 +183,8 @@ class DashboardHR extends Component {
                 /> */}
                 <Route
                   render={
-                    () => <NotFound404/>
-                    // <Redirect to={"/employee/"+ this.props.data["_id"]+"/personal-info"} />
+                    () => 
+                    <Redirect to={"/employee/"+ this.props.data["_id"]+"/personal-info"} />
                   }
                 />
               </Switch>

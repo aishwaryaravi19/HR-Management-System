@@ -70,13 +70,13 @@ class PersonalInfoTable extends Component {
         // filter: true ,
         // width: 150,
       },
-      {
-        headerName: "PANcard No",
-        field: "PANcardNo",
-        sortable: true,
-        // filter: true ,
-        // width: 150,
-      },
+      // {
+      //   headerName: "PANcard No",
+      //   field: "PANcardNo",
+      //   sortable: true,
+      //   // filter: true ,
+      //   // width: 150,
+      // },
 
       {
         headerName: "DOB",

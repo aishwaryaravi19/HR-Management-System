@@ -94,6 +94,7 @@ class WorkExperience extends Component {
   //   this.setState({ table: true });
   // };
   handleWorkExperienceEditUpdate = (info, newInfo) => {
+    const id= localStorage.getItem("_id")
     newInfo.preventDefault();
     console.log("zero data", newInfo.target[0].value);
     let body = {
@@ -102,10 +103,10 @@ class WorkExperience extends Component {
       FromDate: newInfo.target[2].value,
       ToDate: newInfo.target[3].value,
     };
-    console.log("update", body);
+    console.log("update", info);
     axios
       .put(
-        process.env.REACT_APP_API_URL + "/api/work-experience/" + info["_id"],
+        process.env["REACT_APP_API_URL"]+ "/api/work-experience/" + info["_id"],
         body, {
         headers: {
           authorization: localStorage.getItem("token") || ""

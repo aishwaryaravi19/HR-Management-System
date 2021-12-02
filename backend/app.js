@@ -1977,7 +1977,7 @@ app.post("/api/education/:id", verifyEmployee, (req, res) => {
   });
 });
 
-app.put("/api/education/:id", verifyEmployee, (req, res) => {
+app.put("/api/education/:id", (req, res) => {
   Joi.validate(req.body, EducationValidation, (err, result) => {
     if (err) {
       console.log(err);
@@ -2247,7 +2247,8 @@ app.post("/api/work-experience/:id", verifyEmployee, (req, res) => {
   });
 });
 
-app.put("/api/work-experience/:id", verifyEmployee, (req, res) => {
+app.put("/api/work-experience/:id", (req, res) => {
+  console.log("Work edit")
   Joi.validate(req.body, WorkExperienceValidation, (err, result) => {
     if (err) {
       console.log(err);
@@ -2261,6 +2262,7 @@ app.put("/api/work-experience/:id", verifyEmployee, (req, res) => {
         FromDate: req.body.FromDate,
         ToDate: req.body.ToDate
       };
+      console.log("newWork",newWorkExperience)
 
       WorkExperience.findByIdAndUpdate(
         req.params.id,
@@ -2269,6 +2271,7 @@ app.put("/api/work-experience/:id", verifyEmployee, (req, res) => {
           if (err) {
             res.send("error");
           } else {
+            console.log("work experience edit")
             res.send(newWorkExperience);
           }
         }
@@ -2391,7 +2394,7 @@ app.post("/api/leave-application-emp/:id", verifyEmployee, (req, res) => {
   });
 });
 
-app.put("/api/leave-application-emp/:id", verifyEmployee, (req, res) => {
+app.put("/api/leave-application-emp/:id",  (req, res) => {
   Joi.validate(req.body, LeaveApplicationValidation, (err, result) => {
     if (err) {
       console.log(err);
@@ -2713,31 +2716,40 @@ function verifyHREmployee(req, res, next) {
 function verifyEmployee(req, res, next) {
   console.log(req.headers["authorization"]);
   const Header = req.headers["authorization"];
+  console.log("verifyEm-->p",Header)
 
   if (typeof Header !== "undefined") {
     // decodedData = jwt.decode(req.headers['authorization']);
     // if(decodedData.Account)
     jwt.verify(Header, jwtKey, (err, authData) => {
       if (err) {
+        console.log("403-->",err)
         res.sendStatus(403);
       } else {
+        console.log("CHECK-->",authData._id == req.params.id)
         if (authData._id == req.params.id) {
           console.log(authData);
           if (authData.Account == 3) {
             next();
           } else {
+            console.log("auth--->",)
             res.sendStatus(403);
           }
         } else {
+          console.log("forbidden--->",authData,req.params.id)
+
           res.sendStatus(403);
         }
       }
     });
   } else {
     // Forbidden
+    console.log("forbidden")
     res.sendStatus(403);
   }
 }
+
+
 
 var port = process.env.PORT;
 if (port & process.env.IP) {
