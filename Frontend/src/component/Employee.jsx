@@ -198,13 +198,13 @@ class Employee extends Component {
       EmployeeCode: newInfo.target[10].value,
       DepartmentID: newInfo.target[11].value,
       PositionID: newInfo.target[12].value,
-      DateOfJoining: newInfo.target[13].value,
-      TerminateDate: newInfo.target[14].value,
+      DateOfJoining: moment().format("YYYY-MM-DD"),
+      //TerminateDate: newInfo.target[14].value,
     };
     console.log("update", body);
     axios
       .put(
-        process.env.REACT_APP_API_URL + "/api/employee/" + info["_id"],
+        process.env["REACT_APP_API_URL"]+ "/api/employee/" + info["_id"],
         body, {
         headers: {
           authorization: localStorage.getItem("token") || ""

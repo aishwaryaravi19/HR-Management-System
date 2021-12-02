@@ -641,7 +641,7 @@ app.get("/api/role", verifyAdminHR, (req, res) => {
   Role.find()
     .populate("company")
     .exec(function (err, role) {
-      console.log("response from apio role",role)
+     
       res.send(role);
     });
 });
@@ -832,7 +832,7 @@ app.get("/api/department", verifyAdminHR, (req, res) => {
   Department.find()
     .populate("company")
     .exec(function (err, employees) {
-      console.log("employes->",employees,err)
+      //console.log("employes->",employees,err)
       res.send(employees);
     });
 });
@@ -1584,7 +1584,7 @@ app.get("/api/employee", verifyHR, (req, res) => {
     })
     .select(" -education  -workExperience -Password")
     .exec(function (err, employee) {
-      console.log("employee->",employee)
+    
       res.send(employee);
     });
 });
@@ -1634,6 +1634,7 @@ app.post("/api/employee", verifyHR, (req, res) => {
 });
 
 app.put("/api/employee/:id", verifyHR, (req, res) => {
+  console.log("put api/employee")
   Joi.validate(req.body, EmployeeValidationUpdate, (err, result) => {
     if (err) {
       console.log(err);
@@ -1657,21 +1658,25 @@ app.put("/api/employee/:id", verifyHR, (req, res) => {
         DateOfJoining: req.body.DateOfJoining,
         TerminateDate: req.body.TerminateDate
       };
+      console.log("roldid-->",req.body.RoleID)
 
       Employee.findByIdAndUpdate(req.params.id, newEmployee, function (
         err,
         employee
       ) {
         if (err) {
+          console.log("Err0r--->",err)
           res.send("error");
         } else {
+          console.log("employeeupdate-->",employee )
+          
           res.send(newEmployee);
         }
       });
     }
 
-    console.log("put");
-    console.log(req.body);
+   
+   
   });
 });
 

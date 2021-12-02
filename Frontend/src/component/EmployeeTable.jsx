@@ -129,19 +129,19 @@ class AdminEmployeeTable extends Component {
         // filter: true ,
 
       },
-      {
-        headerName: "",
-        field: "info",
-        filter: false,
-        width: 30,
-        // cellRenderer:this.ageCellRendererFunc,
-        // cellRendererFramework: function(params) {
-        //   return <button OnClick={console.log("pa",params)}>Test</button>;
-        // },
-        cellRendererFramework: this.renderInfoButton.bind(this),
+      // {
+      //   headerName: "",
+      //   field: "info",
+      //   filter: false,
+      //   width: 30,
+      //   // cellRenderer:this.ageCellRendererFunc,
+      //   // cellRendererFramework: function(params) {
+      //   //   return <button OnClick={console.log("pa",params)}>Test</button>;
+      //   // },
+      //   cellRendererFramework: this.renderInfoButton.bind(this),
 
 
-      },
+      // },
       {
         headerName: "",
         field: "edit",
