@@ -157,7 +157,7 @@ class DepartmentTable extends Component {
   render() {
     return (
       <div id="table-outer-div-scroll">
-        <h2 style= {{fontFamily:"cursive"}}id="role-title">Department Details</h2>
+        <h2 style= {{}}id="role-title">Department Details</h2>
         <Button
           variant="primary"
           id="add-button"
