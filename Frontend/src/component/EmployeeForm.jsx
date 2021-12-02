@@ -14,7 +14,7 @@ class EmployeeForm extends Component {
   loadRoleInfo = () => {
     console.log("loadrole")
     axios
-      .get("http://localhost:4000" + "/api/role", {
+      .get(process.env["REACT_APP_API_URL"] + "/api/role", {
         headers: {
           authorization: localStorage.getItem("token") || ""
         }
@@ -29,7 +29,7 @@ class EmployeeForm extends Component {
   };
   loadPositionInfo = () => {
     axios
-      .get("http://localhost:4000" + "/api/position", {
+      .get(process.env["REACT_APP_API_URL"] + "/api/position", {
         headers: {
           authorization: localStorage.getItem("token") || ""
         }
@@ -43,7 +43,7 @@ class EmployeeForm extends Component {
   };
   loadDepartmentInfo = () => {
     axios
-      .get("http://localhost:4000" + "/api/department", {
+      .get(process.env["REACT_APP_API_URL"] + "/api/department", {
         headers: {
           authorization: localStorage.getItem("token") || ""
         }
@@ -245,11 +245,11 @@ class EmployeeForm extends Component {
               </Col>
             </Form.Group>
 
-            <Form.Group as={Row}>
+            {/* <Form.Group as={Row}>
               <Form.Label column sm={2}>
                 Position
               </Form.Label>
-              <Col sm={10} className="form-input">
+              <Col sm={10} className="form-input"> */}
                 {/* <Form.Control as="select" name="position" required>
                   <option value="" disabled selected>
                     Select your option
@@ -258,8 +258,8 @@ class EmployeeForm extends Component {
                     <option key={index} value={data["_id"]}>{data["PositionName"]}</option>
                   ))}
                 </Form.Control> */}
-              </Col>
-            </Form.Group>
+              {/* </Col>
+            </Form.Group> */}
             <Form.Group as={Row}>
               <Form.Label column sm={2}>
                 Date Of Joining

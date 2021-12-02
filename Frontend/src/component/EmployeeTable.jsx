@@ -101,14 +101,7 @@ class AdminEmployeeTable extends Component {
         width: 70,
         // filter: true ,
       },
-      {
-        headerName: "Position Name",
-        field: "PositionName",
-        sortable: true,
-        width: 120,
-
-        // filter: true ,
-      },
+     
       {
         headerName: "Department Name",
         field: "DepartmentName",

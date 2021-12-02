@@ -118,11 +118,11 @@ class LeaveApplicationHRTable extends Component {
         this.leaveApplicationHRObj.map(data => {
           let temp = {
             data,
-            EmployeeCode: data["employee"][0]["EmployeeCode"],
-            Name:
+            EmployeeCode: data["employee"] && data['employee'].length>0 ? data['employee'][0]["EmployeeCode"]:"",
+            Name: data["employee"] && data['employee'].length>0 ?
               data["employee"][0]["FirstName"] +
               " " +
-              data["employee"][0]["LastName"],
+              data["employee"][0]["LastName"]:" ",
             Leavetype: data["Leavetype"],
             FromDate: data["FromDate"].slice(0, 10),
             ToDate: data["ToDate"].slice(0, 10),

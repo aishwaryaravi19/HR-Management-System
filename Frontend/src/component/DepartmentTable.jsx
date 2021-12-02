@@ -92,7 +92,7 @@ class DepartmentTable extends Component {
         this.departmentObj.map(data => {
           let temp = {
             data,
-            CompanyName: data["company"][0]["CompanyName"],
+            CompanyName: data["company"] && data['company'].length>0?data['company'][0]["CompanyName"]:"",
             DepartmentName: data["DepartmentName"],
 
           };
@@ -157,7 +157,7 @@ class DepartmentTable extends Component {
   render() {
     return (
       <div id="table-outer-div-scroll">
-        <h2 id="role-title">Department Details</h2>
+        <h2 style= {{fontFamily:"cursive"}}id="role-title">Department Details</h2>
         <Button
           variant="primary"
           id="add-button"

@@ -93,7 +93,7 @@ class RoleTable extends Component {
         this.roleObj.map(data => {
           let temp = {
             data,
-            CompanyName: data["company"][0]["CompanyName"],
+            CompanyName: data["company"] && data["company"].length>0 ?data["company"][0]["CompanyName"]: "",
             RoleName:data["RoleName"],
             
           };

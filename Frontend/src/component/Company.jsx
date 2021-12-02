@@ -102,10 +102,10 @@ class Company extends Component {
       Email: newInfo.target[7].value,
       ContactPerson: newInfo.target[8].value,
       ContactNo: newInfo.target[9].value,
-      FaxNo: newInfo.target[10].value,
-      PanNo: newInfo.target[11].value,
-      GSTNo: newInfo.target[12].value,
-      CINNo: newInfo.target[13].value,
+      // FaxNo: newInfo.target[10].value,
+      // PanNo: newInfo.target[11].value,
+      // GSTNo: newInfo.target[12].value,
+      // CINNo: newInfo.target[13].value,
     };
     console.log("update", body);
     axios

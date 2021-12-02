@@ -21,7 +21,8 @@ class EmployeeFormEdit extends Component {
     EmployeeCodeData: this.props.editData["EmployeeCode"],
 
     DateOfJoiningData: this.props.editData["DateOfJoining"].slice(0, 10),
-    TerminateDateData: this.props.editData["TerminateDate"]?this.props.editData["TerminateDate"].slice(0, 10):" "
+    // console.log(this.props.editData["TerminateDate"]);
+    // TerminateDateData: this.props.editData["TerminateDate"].slice(0, 10)
 
     // value={this.state.EmployeeTitleData}
     // onChange={value => this.onEmployeeTitleDataChange(value)}
@@ -186,7 +187,7 @@ class EmployeeFormEdit extends Component {
               </Col>
             </Form.Group>
 
-            <Form.Group as={Row}>
+            {/* <Form.Group as={Row}>
               <Form.Label column sm={2}>
                 Role
               </Form.Label>
@@ -208,7 +209,7 @@ class EmployeeFormEdit extends Component {
                   ))}
                 </Form.Control>
               </Col>
-            </Form.Group>
+            </Form.Group> */}
             <Form.Group as={Row}>
               <Form.Label as="legend" column sm={2}>
                 Gender
@@ -336,8 +337,8 @@ class EmployeeFormEdit extends Component {
                       key={index}
                       value={data["_id"]}
                       selected={
-                        this.props.editData["department"][0]["_id"] ==
-                        data["_id"]
+                        this.props.editData["department"] && this.props.editData["department"].length>0? this.props.editData["department"][0]["_id"] ==
+                        data["_id"]: this.props.editData["department"][0]["_id"]==""
                       }
                     >
                       {data["DepartmentName"]}

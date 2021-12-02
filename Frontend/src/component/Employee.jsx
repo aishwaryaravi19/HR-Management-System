@@ -142,10 +142,14 @@ class Employee extends Component {
       DepartmentID: event.target[12].value,
       //PositionID: event.target[13].value,
       DateOfJoining: moment().format("YYYY-MM-DD"),
-      TerminateDate: event.target[15].value,
+      
     };
+    if(event.target[15].value && event.target[15].value.length>0){
+      body["TerminateDate"]= event.target[15].value;
+
+    }
     axios
-      .post("http://localhost:4000" + "/api/employee", body, {
+      .post(process.env["REACT_APP_API_URL"]+ "/api/employee", body, {
         headers: {
           authorization: localStorage.getItem("token") || ""
         }

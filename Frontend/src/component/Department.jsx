@@ -73,7 +73,7 @@ class Department extends Component {
     //  let body= "CompanyID=" + event.target[0].value + "&Department=" + event.target[1].value;
     //  let body= "FenilKaneria";
     axios
-      .post("http://localhost:4000" + "/api/department", body, {
+      .post(process.env["REACT_APP_API_URL"] + "/api/department", body, {
         headers: {
           authorization: localStorage.getItem("token") || ""
         }

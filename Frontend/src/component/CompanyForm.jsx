@@ -62,11 +62,15 @@ class CompanyForm extends Component {
     this.loadCityInfo();
   }
   onCountryChange(e) {
-    console.log(e.target.value);
+    console.log("target value",e.target.value);
     let currentCountry = e.target.value;
-
+    console.log("state data", this.state.stateData);
     let filteredState = this.state.stateData.filter(
-      data => data["country"][0]["_id"] == currentCountry
+      data =>
+      { 
+        console.log("data-->",data["country"][0]);
+        return data["country"][0]["_id"] == currentCountry
+      }
     );
     this.setState({ filteredStateData: filteredState });
 
