@@ -13,6 +13,9 @@ import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-balham.css";
 
 
+import BasicTable  from "../BasicTable";
+
+
 const override = css`
   display: block;
   margin: 0 auto;
@@ -201,6 +204,54 @@ class PersonalInfoTable extends Component {
   }
 
   render() {
+    const columns =  [
+      {
+        Header: "FirstName",
+        accessor: "FirstName" // accessor is the "key" in the data
+      },
+      // {
+      //   Header: "Password",
+      //   accessor: "Password"
+      // },
+      {
+        Header: "MiddleName",
+        accessor: "MiddleName"
+      },
+      
+        {
+          Header: "LastName",
+          accessor: "LastName"
+        },
+        {
+          Header: "Gender",
+          accessor: "Gender"
+        },
+        {
+          Header: "ContactNo",
+          accessor: "ContactNo"
+        },
+        
+          {
+            Header: "Email",
+            accessor: "Email"
+          },
+          {
+            Header: "PANCardNo",
+            accessor: "PANcardNo"
+          },
+          
+            {
+              Header: "DOB",
+              accessor: "DOB"
+            },
+            {
+              Header: "Hobbies",
+              accessor: "Hobbies"
+            },
+           
+      
+    ]
+
     return (
       <div id="table-outer-div-scroll">
         <h2 id="role-title">Employee Personal Details {this.props.back ? "of " + this.props.data["FirstName"] + " " + this.props.data["LastName"] : ""}</h2>
@@ -236,7 +287,8 @@ class PersonalInfoTable extends Component {
           //   }
           // }
           >
-            <AgGridReact
+             <BasicTable data={this.state.rowData} columns={columns}/>
+            {/* <AgGridReact
               columnDefs={this.state.columnDefs}
               defaultColDef={this.state.defaultColDef}
               columnTypes={this.state.columnTypes}
@@ -246,7 +298,7 @@ class PersonalInfoTable extends Component {
               pagination={true}
               paginationPageSize={10}
               getRowHeight={this.state.getRowHeight}
-            />
+            /> */}
           </div>
         ) : (
             <div id="loading-bar">

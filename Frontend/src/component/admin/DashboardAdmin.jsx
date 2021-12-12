@@ -21,7 +21,8 @@ import {
   faChair,
   faBuilding,
   faDollarSign,
-  faTasks
+  faTasks,
+  faLandmark
 } from "@fortawesome/free-solid-svg-icons";
 
 function RoleAdminF() {
@@ -93,7 +94,7 @@ class DashboardAdmin extends Component {
                 <li>
                   <Link to="/admin/department">
                     <FontAwesomeIcon
-                      icon={faBuilding}
+                      icon={faLandmark}
                       className="sidebar-icon"
                     /> 
                     Department 

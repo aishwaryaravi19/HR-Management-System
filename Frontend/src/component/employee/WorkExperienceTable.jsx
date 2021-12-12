@@ -12,6 +12,7 @@ import {  Link } from "react-router-dom";
 import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-balham.css";
+import BasicTable from "../BasicTable";
 
 
 const override = css`
@@ -171,6 +172,34 @@ class WorkExperienceTable extends Component {
   }
 
   render() {
+    const columns =  [
+      
+      
+        {
+          Header: "CompanyName",
+          accessor: "CompanyName"
+        },
+        {
+          Header: "Designation",
+          accessor: "Designation"
+        },
+        {
+          Header: "FromDate",
+          accessor: "FromDate"
+        },
+        {
+          Header: "ToDate",
+          accessor: "ToDate"
+        }
+        
+          
+          
+          
+            
+      
+    ]
+
+
     return (
       <div id="table-outer-div-scroll">
         <h2 id="role-title">Employee Work Experience Details {this.props.back?"of " +this.props.data["FirstName"]+" "+this.props.data["LastName"]:""}</h2>
@@ -206,7 +235,11 @@ class WorkExperienceTable extends Component {
     //   }
     // }
   >
-    <AgGridReact
+     <div style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
+             <BasicTable data={this.state.rowData} columns={columns}/>
+             </div>
+        
+    {/* <AgGridReact
       columnDefs={this.state.columnDefs}
       defaultColDef={this.state.defaultColDef}
       columnTypes={this.state.columnTypes}
@@ -216,7 +249,7 @@ class WorkExperienceTable extends Component {
       pagination={true}
       paginationPageSize={10}
       getRowHeight={this.state.getRowHeight}
-    />
+    /> */}
   </div>
 ) : (
   <div id="loading-bar">

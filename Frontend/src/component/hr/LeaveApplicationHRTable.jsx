@@ -10,6 +10,7 @@ import { Form, Button, Col, Row } from "react-bootstrap";
 import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-balham.css";
+import BasicTable from "../BasicTable";
 
 const override = css`
   display: block;
@@ -198,6 +199,46 @@ class LeaveApplicationHRTable extends Component {
   };
 
   render() {
+    const columns =  [
+      {
+        Header: " EmployeeCode",
+        accessor: "EmployeeCode" // accessor is the "key" in the data
+      },
+      // {
+      //   Header: "Password",
+      //   accessor: "Password"
+      // },
+      {
+        Header: "Name",
+        accessor: "Name"
+      },
+      
+        {
+          Header: "Leave type",
+          accessor: "Leavetype"
+        },
+        {
+          Header: "From Date",
+          accessor: "FromDate"
+        },
+        {
+          Header: "To Date",
+          accessor: "ToDate"
+        },
+        
+          {
+            Header: "Reasonforleave",
+            accessor: "Reasonforleave"
+          },
+          {
+            Header: "Status",
+            accessor: "Status"
+          }
+          
+          
+            
+      
+    ]
     return (
       <div id="table-outer-div-scroll">
         <h2 id="role-title">Employee Leave Application Details</h2>
@@ -214,7 +255,8 @@ class LeaveApplicationHRTable extends Component {
           //   }
           // }
           >
-            <AgGridReact
+                <BasicTable data={this.state.rowData} columns={columns}/>
+            {/* <AgGridReact
               columnDefs={this.state.columnDefs}
               defaultColDef={this.state.defaultColDef}
               columnTypes={this.state.columnTypes}
@@ -224,7 +266,7 @@ class LeaveApplicationHRTable extends Component {
               pagination={true}
               paginationPageSize={10}
               getRowHeight={this.state.getRowHeight}
-            />
+            /> */}
           </div>
         ) : (
             <div id="loading-bar">

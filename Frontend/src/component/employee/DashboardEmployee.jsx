@@ -20,6 +20,7 @@ faFileAlt,
 faUniversity,
 faBriefcase,
 faMale,
+faSignOutAlt
 } from "@fortawesome/free-solid-svg-icons";
 
 
@@ -62,6 +63,12 @@ class DashboardHR extends Component {
 
           <div id="main-non-nav">
             <div id="sidebar">
+            {/* <div style={{flexDirection:'row',display:'flex',paddingTop:10,paddingBottom:10,alignItems:'center',justifyContent:'center',backgroundColor:'red'}}>
+              <h6 style={{color:"white",marginLeft:5,marginTop:'3%'}}> Welcome {this.props.data["Name"]}</h6>
+              <div style={{marginRight:5}} onClick={this.props.onLogout }>
+              <FontAwesomeIcon onLogout={this.props.onLogout} icon={faSignOutAlt} size="5px" className="sidebar-icon" />
+</div>
+              </div> */}
               <div id="sidebar-top-content" />
               <div id="main-title" className="main-title-employee">
                 <FontAwesomeIcon icon={faUsers} className="sidebar-icon" />

@@ -10,6 +10,7 @@ import { Button } from "react-bootstrap";
 import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-balham.css";
+import BasicTable from "./BasicTable";
 
 const override = css`
   display: block;
@@ -152,6 +153,23 @@ class CityTable extends Component {
   }
 
   render() {
+    const columns =  [
+      
+      
+      {
+        Header: "CountryName",
+        accessor: "CountryName"
+      },
+      {
+        Header: "StateName",
+        accessor: "StateName"
+      },
+      {
+        Header: "CityName",
+        accessor: "CityName"
+      },
+     
+  ]
     // let value=(this.props.pass) ? undefined : "";<i class="fas fa-plus"></i>
     return (
       <div id="table-outer-div-scroll">
@@ -183,7 +201,10 @@ class CityTable extends Component {
           //   }
           // }
           >
-            <AgGridReact
+            <div style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
+             <BasicTable data={this.state.rowData} columns={columns}/>
+             </div>
+            {/* <AgGridReact
               columnDefs={this.state.columnDefs}
               defaultColDef={this.state.defaultColDef}
               columnTypes={this.state.columnTypes}
@@ -193,7 +214,7 @@ class CityTable extends Component {
               pagination={true}
               paginationPageSize={10}
               getRowHeight={this.state.getRowHeight}
-            />
+            /> */}
           </div>
         ) : (
             <div id="loading-bar">

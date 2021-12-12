@@ -15,6 +15,9 @@ import { Button } from "react-bootstrap";
 import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-balham.css";
+import ReactTable,{useTable} from "react-table";  
+import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
+import BasicTable from "./BasicTable";
 
 
 const override = css`
@@ -176,6 +179,7 @@ class AdminEmployeeTable extends Component {
   };
   employeeObj = [];
   rowDataT = [];
+  
 
   loadEmployeeData = () => {
     axios
@@ -191,11 +195,28 @@ class AdminEmployeeTable extends Component {
         this.setState({ loading: false });
         this.rowDataT = [];
         console.log("")
-        this.employeeObj.map(data => {
+        const obj =[
+          {
+            company: "Alfred",
+            contact: "Maria Anders",
+            country: "Germany"
+          },
+          {
+            company: "Centro comercial Moctezuma",
+            contact: "Francisco Chang",
+            country: "Mexico"
+          },
+          {
+            company: "Ernst Handel",
+            contact: "Roland Mendel	",
+            country: "Austria"
+          }
+        ]
+        response.data.map(data => {
           let temp = {
-            data,
+            
             Email: data["Email"],
-            Password: data["Password"],
+           // Password: data["Password"],
             Account: data["Account"] == 1 ? "Admin" : (data["Account"] == 2 ? "HR" : (data["Account"] == 3 ? "Employee" : "")),
             RoleName: data["role"] && data["role"].length>0 ? data["role"][0]["RoleName"] :" ",
             FirstName: data["FirstName"],
@@ -208,7 +229,7 @@ class AdminEmployeeTable extends Component {
             PositionName: " ",
             DateOfJoining: data["DateOfJoining"].slice(0, 10)
           };
-          console.log("temp-->",temp)
+          
 
           this.rowDataT.push(temp);
         });
@@ -311,9 +332,92 @@ class AdminEmployeeTable extends Component {
   // }
 
   render() {
-    // let filteredEmp = this.getFilteredEmp();
-    console.log("this.state",this.state.rowData)
+    console.log("this.state.rowdata",this.state.rowData)
+    const columns =  [
+        {
+          Header: "Email",
+          accessor: "Email" // accessor is the "key" in the data
+        },
+        // {
+        //   Header: "Password",
+        //   accessor: "Password"
+        // },
+        {
+          Header: "Account",
+          accessor: "Account"
+        },
+        
+          {
+            Header: "RoleName",
+            accessor: "RoleName"
+          },
+          {
+            Header: "FirstName",
+            accessor: "FirstName"
+          },
+          {
+            Header: "MiddleName",
+            accessor: "MiddleName"
+          },
+          
+            {
+              Header: "LastName",
+              accessor: "LastName"
+            },
+            {
+              Header: "DOB",
+              accessor: "DOB"
+            },
+            
+              {
+                Header: "ContactNo",
+                accessor: "ContactNo"
+              },
+              {
+                Header: "EmployeeCode",
+                accessor: "EmployeeCode"
+              },
+              {
+                Header: "DepartmentName",
+                accessor: "DepartmentName"
+              },
+              
+                {
+                  Header: "PositionName",
+                  accessor: "PositionName"
+                },
+                {
+                  Header: "DateOfJoining",
+                  accessor: "DateOfJoining"
+                },
+        
+      ]
+      
+    
+  const data =[
+        {
+          company: "Alfred",
+          contact: "Maria Anders",
+          country: "Germany"
+        },
+        {
+          company: "Centro comercial Moctezuma",
+          contact: "Francisco Chang",
+          country: "Mexico"
+        },
+        {
+          company: "Ernst Handel",
+          contact: "Roland Mendel	",
+          country: "Austria"
+        }
+      ]
+      console.log("row data-->",data)
+      var rowStyle={
+        backgroundColor:'red'
+      }
+     
     return (
+      
       <div id="table-outer-div-scroll" style={{}}>
         <h2 id="role-title">Employee Details</h2>
 
@@ -322,7 +426,7 @@ class AdminEmployeeTable extends Component {
           id="add-button"
           onClick={this.props.onAddEmployee}
         >
-          <FontAwesomeIcon icon={faPlus} id="plus-icon" />
+         
           Add
         </Button>
 
@@ -338,17 +442,26 @@ class AdminEmployeeTable extends Component {
           //   }
           // }
           >
-            <AgGridReact
+ {/* <ReactTable  
+            data={data}  
+            columns={columns}  
+           // defaultPageSize = {2}  
+            //pageSizeOptions = {[2,4, 6]}  
+         />   */}
+         <BasicTable data={this.state.rowData} columns={columns}/>
+
+            {/* <AgGridReact
               columnDefs={this.state.columnDefs}
               defaultColDef={this.state.defaultColDef}
               columnTypes={this.state.columnTypes}
+              rowStyle={{rowStyle}}
               rowData={this.state.rowData}
               // floatingFilter={true}
               // onGridReady={this.onGridReady}
               pagination={true}
               paginationPageSize={10}
               getRowHeight={this.state.getRowHeight}
-            />
+            /> */}
           </div>
         ) : (
             <div id="loading-bar">

@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-balham.css";
+import BasicTable from "../BasicTable";
 
 
 const override = css`
@@ -167,10 +168,35 @@ class EducationTable extends Component {
       />
     );
   }
-
   render() {
+    const columns =  [
+      
+      
+      {
+        Header: "SchollUniversity",
+        accessor: "SchoolUniversity"
+      },
+      {
+        Header: "Degree",
+        accessor: "Degree"
+      },
+      {
+        Header: "Grade",
+        accessor: "Grade"
+      },
+      {
+        Header: "PassingOfYear",
+        accessor: "PassingOfYear"
+      }
+      
+        
+        
+        
+          
+    
+  ]
     return (
-      <div id="table-outer-div-scroll">
+      <div id="table-outer-div-scroll" style={{}}>
         <h2 id="role-title">Employee Education Details {this.props.back ? "of " + this.props.data["FirstName"] + " " + this.props.data["LastName"] : ""}</h2>
 
         {this.props.back ? (<Link to="/hr/employee">
@@ -204,7 +230,10 @@ class EducationTable extends Component {
           //   }
           // }
           >
-            <AgGridReact
+            <div style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
+             <BasicTable data={this.state.rowData} columns={columns}/>
+             </div>
+            {/* <AgGridReact
               columnDefs={this.state.columnDefs}
               defaultColDef={this.state.defaultColDef}
               columnTypes={this.state.columnTypes}
@@ -214,7 +243,7 @@ class EducationTable extends Component {
               pagination={true}
               paginationPageSize={10}
               getRowHeight={this.state.getRowHeight}
-            />
+            /> */}
           </div>
         ) : (
             <div id="loading-bar">

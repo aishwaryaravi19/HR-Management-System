@@ -8,6 +8,22 @@
     /* margin-left: 15px; */
     width: 100%;
 }
+body{
+    background-color: #53658d;
+    background-image: url('../img/background1.jpg');
+    /* The image used */
+    /* background-image: url("img_nature.jpg"); */
+  
+    /* Control the height of the image */
+    min-height: 380px;
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+
+}
 @media (max-width: 1000px) {
     #search-bar{
         width: 95%;

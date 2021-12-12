@@ -28,15 +28,7 @@ padding-right: 10px;
   
 
 }
-#toggle-switch{
-  margin-left: 20px;
-  height: 50px;
-  /* margin-top: 20px; */
-  float: right;
-  /* padding-top: 20px; */
-  display: inline-block;
-  padding-top: 15px;
-}
+
 .navbar-right-content{
   text-decoration: none;
   color: black;

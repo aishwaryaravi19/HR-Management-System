@@ -6,6 +6,7 @@ import { faPlus, faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 import { RingLoader } from "react-spinners";
 import { css } from "@emotion/core";
 import { Button } from "react-bootstrap";
+import BasicTable from "./BasicTable";
 
 
 import { AgGridReact } from "ag-grid-react";
@@ -155,6 +156,19 @@ class DepartmentTable extends Component {
   }
 
   render() {
+    const columns =  [
+      
+      
+      {
+        Header: "CompanyName",
+        accessor: "CompanyName"
+      },
+      {
+        Header: "DepartmentName",
+        accessor: "DepartmentName"
+      },
+     
+  ]
     return (
       <div id="table-outer-div-scroll">
         <h2 style= {{}}id="role-title">Department Details</h2>
@@ -179,7 +193,10 @@ class DepartmentTable extends Component {
           //   }
           // }
           >
-            <AgGridReact
+             <div style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
+             <BasicTable data={this.state.rowData} columns={columns}/>
+             </div>
+            {/* <AgGridReact
               columnDefs={this.state.columnDefs}
               defaultColDef={this.state.defaultColDef}
               columnTypes={this.state.columnTypes}
@@ -189,7 +206,7 @@ class DepartmentTable extends Component {
               pagination={true}
               paginationPageSize={10}
               getRowHeight={this.state.getRowHeight}
-            />
+            /> */}
           </div>
         ) : (
             <div id="loading-bar">

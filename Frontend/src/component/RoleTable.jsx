@@ -10,6 +10,7 @@ import { Button } from "react-bootstrap";
 import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-balham.css";
+import BasicTable from "./BasicTable";
 
 
 const override = css`
@@ -154,6 +155,25 @@ class RoleTable extends Component {
   }
 
   render() {
+    const columns =  [
+      
+      
+      {
+        Header: "CompanyName",
+        accessor: "CompanyName"
+      },
+      {
+        Header: "RoleName",
+        accessor: "RoleName"
+      },
+     
+      
+        
+        
+        
+          
+    
+  ]
     return (
       <div id="table-outer-div-scroll" >
         <div style={{justifyContent:'space-between',display:'flex',flexDirection:'row',paddingRight:'5%',alignItems:'center'}}>
@@ -184,7 +204,10 @@ class RoleTable extends Component {
             //   }
             // }
           >
-            <AgGridReact
+             <div style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
+             <BasicTable data={this.state.rowData} columns={columns}/>
+             </div>
+            {/* <AgGridReact
               columnDefs={this.state.columnDefs}
               defaultColDef={this.state.defaultColDef}
               columnTypes={this.state.columnTypes}
@@ -194,7 +217,7 @@ class RoleTable extends Component {
               pagination={true}
               paginationPageSize={10}
               getRowHeight={this.state.getRowHeight}
-            />
+            /> */}
           </div>
         ) : (
           <div id="loading-bar">

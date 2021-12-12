@@ -31,7 +31,11 @@ faCity,
 faGlobeAmericas,
 faPlaceOfWorship,
 faArchway,
-faUserCircle
+faUserCircle,
+faLandmark,
+faGlobe,
+faIndustry,
+faSignOutAlt
 } from "@fortawesome/free-solid-svg-icons";
 
 function RoleHRF() {
@@ -107,9 +111,16 @@ class DashboardHR extends Component {
           </div>
 
           <div id="main-non-nav">
-            <div id="sidebar">
-              <div id="sidebar-top-content" />
+            <div id="sidebar" style={{width:"240px"}}>
+              <div id="sidebar-top-content"  />
+              {/* <div style={{flexDirection:'row',display:'flex',paddingTop:10,paddingBottom:10,alignItems:'center',justifyContent:'center'}}>
+              <h6 style={{color:"white",marginLeft:5,marginTop:'3%'}}> Welcome {this.props.data["Name"]}</h6>
+              <div style={{marginRight:5}} onClick={this.props.onLogout }>
+              <FontAwesomeIcon onLogout={this.props.onLogout} icon={faSignOutAlt} size="5px" className="sidebar-icon" />
+</div>
+              </div> */}
               <div id="main-title">
+                
                 <FontAwesomeIcon icon={faUserCircle} className="sidebar-icon" />
                 <h6 style={{textAlign:'center',marginTop:5}}>HR</h6>
               </div>
@@ -134,7 +145,7 @@ class DashboardHR extends Component {
                 </li>
                 <li>
                   <Link to="/hr/company">
-                    <FontAwesomeIcon icon={faCity} className="sidebar-icon" /> 
+                    <FontAwesomeIcon icon={faIndustry} className="sidebar-icon" /> 
                     company 
                   </Link> 
                 </li>
@@ -153,7 +164,7 @@ class DashboardHR extends Component {
                 <li>
                   <Link to="/hr/department">
                     <FontAwesomeIcon
-                      icon={faBuilding}
+                      icon={faLandmark}
                       className="sidebar-icon"
                     /> 
                     Department 
@@ -161,7 +172,7 @@ class DashboardHR extends Component {
                 </li>
                 <li>
                   <Link to="/hr/country">
-                    <FontAwesomeIcon icon={faGlobeAmericas} className="sidebar-icon" /> 
+                    <FontAwesomeIcon icon={faGlobe} className="sidebar-icon" /> 
                     Country 
                   </Link> 
                 </li>
@@ -173,7 +184,7 @@ class DashboardHR extends Component {
                 </li>
                 <li>
                   <Link to="/hr/city">
-                    <FontAwesomeIcon icon={faArchway} className="sidebar-icon" /> 
+                    <FontAwesomeIcon icon={faCity} className="sidebar-icon" /> 
                     City 
                   </Link> 
                 </li>
